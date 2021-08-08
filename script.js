@@ -244,12 +244,12 @@ onload = function () {
     function pushEdges(dist, curr, reverse) {
         let tmp_edges = [];
         while(dist[curr][0]!==0){
-            let fm = dist[curr][1];
+            let parent = dist[curr][1];
             if(reverse)
-                tmp_edges.push({arrows: { to: { enabled: true}},from: curr+1, to: fm+1, color: 'orange', label: String(dist[curr][0] - dist[fm][0])});
+                tmp_edges.push({arrows: { to: { enabled: true}},from: curr+1, to: parent+1, color: 'orange', label: String(dist[curr][0] - dist[parent][0])});
             else
-                tmp_edges.push({arrows: { to: { enabled: true}},from: fm+1, to: curr+1, color: 'orange', label: String(dist[curr][0] - dist[fm][0])});
-            curr = fm;
+                tmp_edges.push({arrows: { to: { enabled: true}},from: parent+1, to: curr+1, color: 'orange', label: String(dist[curr][0] - dist[parent][0])});
+            curr = parent;
         }
         return tmp_edges;
     }
